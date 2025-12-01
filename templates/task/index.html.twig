@@ -21,9 +21,11 @@
                     <span class="{{ task.completed ? 'line-through text-gray-500' : '' }}">
                         {{ task.title }}
                     </span>
-                    <span class="text-xl">
-                        {{ task.completed ? '✔' : '❌' }}
-                    </span>
+                <div class="flex items-center space-x-2">
+                        <a href="{{ path('task_toggle', {id: task.id}) }}" class="text-xl">
+                            {{ task.completed ? '✔' : '❌' }}
+                        </a>                      
+                    </div>                  
                 </li>
             {% endfor %}
         </ul>

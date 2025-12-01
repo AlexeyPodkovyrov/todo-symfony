@@ -42,4 +42,13 @@ class TaskController extends AbstractController
         
         return $this->render('task/create.html.twig');
     }
+
+    #[Route('/task/{id}/toggle', name: 'task_toggle')]
+    public function toggle(Task $task, EntityManagerInterface $entityManager): Response
+    {
+        $task->setCompleted(!$task->isCompleted());
+        $entityManager->flush();
+        
+        return $this->redirectToRoute('task_list');
+    }
 }
